@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+<property name="LogRootPath" value="/www/logs/bob/frame/projecta"/>
+<property name="EncoderCharset" value="UTF-8"/>
+<property name="EncoderPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%5level] [%thread] %logger: %m%n"/>
+<property name="PolicyMaxHistory" value="90"/>
+<property name="PolicyMaxFileSize" value="100MB"/>
+<property name="PolicyTotalSizeCap" value="20GB"/>
+
+<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+<encoder>
+<charset>${EncoderCharset}</charset>
+<pattern>${EncoderPattern}</pattern>
+</encoder>
+</appender>
+
+<!-- Trace 输入到文件，按日期和文件大小 -->
+<appender name="traceRollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<encoder>
+<charset>${EncoderCharset}</charset>
+<pattern>${EncoderPattern}</pattern>
+</encoder>
+<filter class="ch.qos.logback.classic.filter.LevelFilter">
+<level>TRACE</level>
+<onMatch>ACCEPT</onMatch>
+<onMismatch>DENY</onMismatch>
+</filter>
+<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+<fileNamePattern>${LogRootPath}/%d{yyyy-MM-dd}/trace-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+<maxHistory>${PolicyMaxHistory}</maxHistory>
+<maxFileSize>${PolicyMaxFileSize}</maxFileSize>
+<totalSizeCap>${PolicyTotalSizeCap}</totalSizeCap>
+</rollingPolicy>
+</appender>
+
+<!-- Debug 输入到文件，按日期和文件大小 -->
+<appender name="debugRollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<encoder>
+<charset>${EncoderCharset}</charset>
+<pattern>${EncoderPattern}</pattern>
+</encoder>
+<filter class="ch.qos.logback.classic.filter.LevelFilter">
+<level>DEBUG</level>
+<onMatch>ACCEPT</onMatch>
+<onMismatch>DENY</onMismatch>
+</filter>
+<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+<fileNamePattern>${LogRootPath}/%d{yyyy-MM-dd}/debug-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+<maxHistory>${PolicyMaxHistory}</maxHistory>
+<maxFileSize>${PolicyMaxFileSize}</maxFileSize>
+<totalSizeCap>${PolicyTotalSizeCap}</totalSizeCap>
+</rollingPolicy>
+</appender>
+
+<!-- Info 输入到文件，按日期和文件大小 -->
+<appender name="infoRollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<encoder>
+<charset>${EncoderCharset}</charset>
+<pattern>${EncoderPattern}</pattern>
+</encoder>
+<filter class="ch.qos.logback.classic.filter.LevelFilter">
+<level>INFO</level>
+<onMatch>ACCEPT</onMatch>
+<onMismatch>DENY</onMismatch>
+</filter>
+<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+<fileNamePattern>${LogRootPath}/%d{yyyy-MM-dd}/info-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+<maxHistory>${PolicyMaxHistory}</maxHistory>
+<maxFileSize>${PolicyMaxFileSize}</maxFileSize>
+<totalSizeCap>${PolicyTotalSizeCap}</totalSizeCap>
+</rollingPolicy>
+</appender>
+
+<!-- Warn 输入到文件，按日期和文件大小 -->
+<appender name="warnRollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<encoder>
+<charset>${EncoderCharset}</charset>
+<pattern>${EncoderPattern}</pattern>
+</encoder>
+<filter class="ch.qos.logback.classic.filter.LevelFilter">
+<level>WARN</level>
+<onMatch>ACCEPT</onMatch>
+<onMismatch>DENY</onMismatch>
+</filter>
+<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+<fileNamePattern>${LogRootPath}/%d{yyyy-MM-dd}/warn-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+<maxHistory>${PolicyMaxHistory}</maxHistory>
+<maxFileSize>${PolicyMaxFileSize}</maxFileSize>
+<totalSizeCap>${PolicyTotalSizeCap}</totalSizeCap>
+</rollingPolicy>
+</appender>
+
+<!-- Error 输入到文件，按日期和文件大小 -->
+<appender name="errorRollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<encoder>
+<charset>${EncoderCharset}</charset>
+<pattern>${EncoderPattern}</pattern>
+</encoder>
+<filter class="ch.qos.logback.classic.filter.LevelFilter">
+<level>ERROR</level>
+<onMatch>ACCEPT</onMatch>
+<onMismatch>DENY</onMismatch>
+</filter>
+<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+<fileNamePattern>${LogRootPath}/%d{yyyy-MM-dd}/error-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+<maxHistory>${PolicyMaxHistory}</maxHistory>
+<maxFileSize>${PolicyMaxFileSize}</maxFileSize>
+<totalSizeCap>${PolicyTotalSizeCap}</totalSizeCap>
+</rollingPolicy>
+</appender>
+
+<!-- Access 输入到文件，按日期和文件大小 -->
+<appender name="accessRollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<encoder>
+<charset>${EncoderCharset}</charset>
+<pattern>${EncoderPattern}</pattern>
+</encoder>
+<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+<fileNamePattern>${LogRootPath}/%d{yyyy-MM-dd}/access-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+<maxHistory>${PolicyMaxHistory}</maxHistory>
+<maxFileSize>${PolicyMaxFileSize}</maxFileSize>
+<totalSizeCap>${PolicyTotalSizeCap}</totalSizeCap>
+</rollingPolicy>
+</appender>
+
+<logger name="org.apache" level="WARN"/>
+<logger name="org.hibernate" level="WARN"/>
+<logger name="org.springframework" level="INFO" additivity="false"/>
+<logger name="org.springframework.web.servlet.PageNotFound" level="OFF" additivity="false"/>
+<logger name="org.springframework.web.socket.server.support.DefaultHandshakeHandler" level="OFF"
+additivity="false"/>
+<logger name="springfox.documentation.spring.web" level="ERROR" additivity="false"/>
+<logger name="org.mybatis" level="DEBUG" additivity="false"/>
+
+
+<!-- Logger 根目录 -->
+<root level="DEBUG">
+<appender-ref ref="console"/>
+<appender-ref ref="traceRollingFile"/>
+<appender-ref ref="debugRollingFile"/>
+<appender-ref ref="infoRollingFile"/>
+<appender-ref ref="warnRollingFile"/>
+<appender-ref ref="errorRollingFile"/>
+</root>
+</configuration>

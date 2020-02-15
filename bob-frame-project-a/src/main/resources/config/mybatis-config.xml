@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="useGeneratedKeys" value="false"/>
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+        <setting name="defaultStatementTimeout" value="25"/>
+        <setting name="defaultFetchSize" value="100"/>
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+        <setting name="lazyLoadTriggerMethods"
+                 value="equals,clone,hashCode,toString"/>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+
+<!--    <plugins>-->
+<!--        <plugin interceptor="com.xpand.duola.mybatis.interceptor.IDGeneratorInterceptor">-->
+<!--            &lt;!&ndash;<property name="snow.data.id" value="1"/>&ndash;&gt;-->
+<!--        </plugin>-->
+<!--        &lt;!&ndash;<plugin interceptor="com.github.pagehelper.pageDataHelper">&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="dialect" value="mysql"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="offsetAsPageNum" value="false"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="rowBoundsWithCount" value="false"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="pageSizeZero" value="true"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="reasonable" value="false"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="supportMethodsArguments" value="false"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="returnPageInfo" value="none"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;</plugin>&ndash;&gt;-->
+<!--    </plugins>-->
+
+    <!--<properties resource="data-id.properties"/>-->
+
+</configuration>
